@@ -266,6 +266,7 @@ class EmbeddingsGraph(object):
     image = tf.expand_dims(image, 0)
 
     # convert_image_dtype also scales [0, uint8_max] -> [0 ,1).
+    image = color(image)
     image = tf.image.convert_image_dtype(image, dtype=tf.float32)
     image = tf.image.resize_bilinear(
         image, [self.HEIGHT, self.WIDTH], align_corners=False)
