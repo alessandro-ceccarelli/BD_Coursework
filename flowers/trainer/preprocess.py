@@ -239,18 +239,19 @@ class EmbeddingsGraph(object):
     """
   
     def color(x):
-    """Color augmentation
+      
+      """Color augmentation
 
-    Args:
+      Args:
         x: Image
 
-    Returns:
+      Returns:
         Augmented image
-    """
-    x = tf.image.random_hue(x, 0.08)
-    x = tf.image.random_saturation(x, 0.6, 1.6)
-    x = tf.image.random_brightness(x, 0.05)
-    x = tf.image.random_contrast(x, 0.7, 1.3)
+      """
+      x = tf.image.random_hue(x, 0.08)
+      x = tf.image.random_saturation(x, 0.6, 1.6)
+      x = tf.image.random_brightness(x, 0.05)
+      x = tf.image.random_contrast(x, 0.7, 1.3)
     return x
 
     input_jpeg = tf.placeholder(tf.string, shape=None)
