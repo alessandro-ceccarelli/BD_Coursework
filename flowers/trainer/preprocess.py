@@ -237,10 +237,28 @@ class EmbeddingsGraph(object):
       input_jpeg: A tensor containing raw image bytes as the input layer.
       embedding: The embeddings tensor, that will be materialized later.
     """
+  
+    def color(x):
+    """Color augmentation
+
+    Args:
+        x: Image
+
+    Returns:
+        Augmented image
+    """
+    x = tf.image.random_hue(x, 0.08)
+    x = tf.image.random_saturation(x, 0.6, 1.6)
+    x = tf.image.random_brightness(x, 0.05)
+    x = tf.image.random_contrast(x, 0.7, 1.3)
+    return x
 
     input_jpeg = tf.placeholder(tf.string, shape=None)
     image = tf.image.decode_jpeg(input_jpeg, channels=self.CHANNELS)
-
+    
+    # Augmentation
+    image = color(image)
+    
     # Note resize expects a batch_size, but we are feeding a single image.
     # So we have to expand then squeeze.  Resize returns float32 in the
     # range [0, uint8_max]
