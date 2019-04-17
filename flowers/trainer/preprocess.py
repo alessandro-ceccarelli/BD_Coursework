@@ -439,9 +439,12 @@ def default_args(argv):
       help='See Dataflow runners, may be blocking'
       ' or not, on cloud or not, etc.')
   
-  # New Bit
+  # New Bits
   parser.add_argument(
       '--autoscaling_algorithm', default='THROUGHPUT_BASED', type=str, help='Enable Autoscaling.')
+  
+  parser.add_argument(
+      '--max_num_workers', type=int, help='Set maximum number of workers.')
   
 
   parsed_args, _ = parser.parse_known_args(argv)
