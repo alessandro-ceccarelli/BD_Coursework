@@ -245,16 +245,8 @@ class EmbeddingsGraph(object):
     # Augmentation
     print("Function Definition")
     
-    def color(x):
-      x = tf.image.random_hue(x, 0.08)
-      x = tf.image.random_saturation(x, 0.6, 1.6)
-      x = tf.image.random_brightness(x, 0.05)
-      x = tf.image.random_contrast(x, 0.7, 1.3)  
-      return x
-    
-    print("Done")
       
-    image = color(image)
+  
     
     # Note resize expects a batch_size, but we are feeding a single image.
     # So we have to expand then squeeze.  Resize returns float32 in the
