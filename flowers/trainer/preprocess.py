@@ -441,10 +441,10 @@ def default_args(argv):
   
   # New Bits
   parser.add_argument(
-      '--autoscaling_algorithm', default='THROUGHPUT_BASED', type=str, help='Enable Autoscaling.')
+      '--autoscaling_algorithm', default=NONE, type=str, help='Disables Autoscaling.')
   
   parser.add_argument(
-      '--max_num_workers', type=int, help='Set maximum number of workers.')
+      '--max_num_workers', default=8, type=int, help='Set maximum number of workers.')
   
 
   parsed_args, _ = parser.parse_known_args(argv)
