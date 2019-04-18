@@ -443,12 +443,13 @@ def default_args(argv):
   parser.add_argument(
       '--autoscaling_algorithm', 
       type=str,
-      default=NONE,
+      choices=['NONE', 'THROUGHPUT_BASED'],
+      default=None,
       help='Disables Autoscaling.')
   
   parser.add_argument(
       '--max_num_workers',
-      default=8, type=int, help='Set maximum number of workers.')
+      default=None, type=int, help='Set maximum number of workers.')
   
 
   parsed_args, _ = parser.parse_known_args(argv)
